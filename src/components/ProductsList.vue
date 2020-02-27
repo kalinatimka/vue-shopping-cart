@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   data() {
     return {
@@ -23,14 +25,10 @@ export default {
   },
 
   computed: {
-    products() {
-      return this.$store.state.products;
-      // return this.$store.getters.availableProducts;
-    },
-
-    cart() {
-      return this.$store.state.cart;
-    }
+    ...mapState({
+      products: state => state.products,
+      cart: state => state.cart,
+    }),
   },
 
   methods: {
